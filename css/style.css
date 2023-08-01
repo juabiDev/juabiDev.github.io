@@ -1,0 +1,460 @@
+
+:root {
+    --blanco:#fff;
+    --violeta:#8B5CF6;
+    --negro:#3A3C3D;
+    --gris:#E0DEE0;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,*::before,*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: #f8f9fa;
+    margin: 0;
+    font-family: system-ui;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--negro);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+h1,h2,h3 {
+    margin: 0 0 5rem 0;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 3.6rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+figure {
+    margin: 0 auto;
+}
+
+.header {
+    background-color: var(--blanco);
+    padding: 3rem;
+    & .navegacion {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5rem;
+        align-items: center;
+        justify-content: space-between;
+
+        & .navegacion__info {
+            display: flex;
+            align-items: center;
+            column-gap: 5rem;
+
+            & .navegacion__enlace {
+                position: relative;
+            }
+
+            & .navegacion__enlace::after {
+                content: "";
+                background-color: var(--violeta);
+                display: block;
+                height: 1px;
+                width: 0%;
+                position: absolute;
+            }
+
+            & .navegacion__enlace:hover {
+                &::after {
+                    width: 100%;
+                    transition: .5s ease;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        & .navegacion {
+            flex-direction: row;
+            gap: 5rem;
+        }
+    }
+}
+
+.margen-izquierda {
+    margin-left: 3rem;
+}
+
+.informacion {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 100px auto;
+   gap: 10rem;
+   padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .informacion {
+        flex-direction: row;
+    }
+}
+
+.informacion__imagen {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+.informacion__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.informacion__botones {
+    display: flex;
+    gap: 5rem;
+}
+
+.informacion__botones li {
+    border-radius: 50%;
+}
+
+.boton {
+    border: 2px solid black;
+    border-radius: 50%;
+    transition: .2s ease-in;
+    display: block;
+}
+
+.boton:hover {
+    background-color: var(--violeta);
+    border: none;
+    border: 2px solid var(--blanco);
+}  
+
+.boton--imagen {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin: 0 auto;
+    padding: .7rem;
+    transition: .1s ease-in;
+}  
+
+.boton--imagen:hover {
+    stroke: #fff;
+    fill: #fff;
+}
+
+.proyectos {
+    display: block;
+    max-width: 160rem;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20rem;
+    filter: blur(6px);
+/*     scale: 0.8; Para animar ambas fijarse en el js la funcion projectListShow() el primer if va con esto*/
+    scale: 1;
+    transition: filter .1s ease-in-out;
+    transition-delay: .5s; 
+}
+
+/* 
+    SINTAXIS
+    
+    animation-name: name
+    animation-duration: 0
+    animation-timing-function: ease
+    animation-delay: 0
+    animation-iteration-count: 1
+    animation-direction: normal
+    animation-fill-mode: none
+    animation-play-state: running
+
+*/
+
+.showScale {
+    animation: escalado 2s ease;
+}
+
+.showItem {
+    filter: blur(0);
+}
+
+.pausarAnimacion { 
+    animation-play-state: paused;
+}
+
+@keyframes escalado {
+    0% {
+        scale: 0.8;
+    }
+
+    90% {
+        scale: 1;
+    }
+
+}
+
+@keyframes blureado {
+    0% {
+        filter: blur(6px);
+    }
+
+    50% {
+        filter: blur(0);
+    }
+}
+
+
+
+/* .showList {
+    animation: showList 2s ease ;
+}
+
+@keyframes showList {
+
+    0% {
+        filter: blur(5px);
+        scale: 0.8;
+    }
+
+    50% {
+        scale: 1;
+    }
+
+    100% {
+        filter: blur(0px);
+        animation-play-state: paused;
+    }
+    
+} */
+
+
+@media (min-width: 769px) {
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .project-list {
+        grid-template-columns: repeat(3,1fr);
+    }  
+}
+.proyectos h2 {
+    text-align: center;
+    font-size: 3.8rem;
+}
+
+.project-list {
+    display: grid;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.project--1 {
+    background-image: url("../img/proyecto1.JPG");
+}
+
+.project--2 {
+    background-image: url("../img/proyecto2.JPG");
+}
+
+.project--3 {
+    background-image: url("../img/proyecto3.JPG");
+}
+
+.project--4 {
+    background-image: url("../img/proyecto4.JPG");
+}
+
+.project--5 {
+    background-image: url("../img/proyecto5.JPG");
+}
+
+.project--6 {
+    background-image: url("../img/proyecto6.JPG");
+}
+
+
+.project__info {
+    opacity: 0%;
+    color: var(--blanco);
+    padding: 5rem;
+    width: 100%;
+}
+
+.project__info h3 {
+    margin-bottom: 0;
+}
+
+.project__info p {
+    margin-top: .5rem;
+}
+
+.project__link svg {
+    width: 55px;
+    border-radius: 50%;
+    padding: 1.2rem;
+    background-color: #BFC0C2;
+}
+
+.project__link svg:hover > path{
+    transition: .1s ease-in;
+}
+
+.project__source {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.project__icons {
+    display: flex;
+    gap: 2rem;
+    order: -1;
+}
+
+.project__icons svg {
+    width: 30px;
+}
+.project:hover {
+    cursor: pointer;
+    .overlay {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        inset: 0;
+        background-color: #222222d0;
+        transition: .3s ease-in;
+    }
+
+    .project__info {
+        transition: .3s ease-in;
+        z-index: 3;
+        opacity: 100%;
+    }
+}
+
+.skills {
+    max-width: 120rem;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+}
+
+.skills h2 {
+    margin-top: 15rem;
+    text-align: center;
+}
+
+.skill img {
+    width: 100px;
+}
+
+.skill-list{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    row-gap: 5rem;
+}
+
+@media (min-width: 768px) {
+    .skill-list{
+        gap: 5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .skill-list{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+#contact h2{
+    text-align: center;
+    margin-top: 15rem;
+}
+.formulario {
+    max-width: 600px;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10rem;
+}
+
+.campo input[type="text"],input[type="email"] {
+    width: 100%;
+    padding: 1rem;
+    border:none;
+    background-color: var(--blanco);
+    border-bottom: 1px solid var(--negro);
+    margin-bottom: 3rem;
+}
+
+.campo input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--violeta);
+    border: none;
+    padding: 1rem 5rem;
+    color: var(--blanco);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
