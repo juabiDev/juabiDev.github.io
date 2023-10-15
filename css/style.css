@@ -186,25 +186,10 @@ figure {
     margin: 0 auto;
     margin-top: 20rem;
     filter: blur(6px);
-/*     scale: 0.8; Para animar ambas fijarse en el js la funcion projectListShow() el primer if va con esto*/
     scale: 1;
     transition: filter .1s ease-in-out;
-    transition-delay: .5s; 
+    transition-delay: .2s; 
 }
-
-/* 
-    SINTAXIS
-    
-    animation-name: name
-    animation-duration: 0
-    animation-timing-function: ease
-    animation-delay: 0
-    animation-iteration-count: 1
-    animation-direction: normal
-    animation-fill-mode: none
-    animation-play-state: running
-
-*/
 
 .showScale {
     animation: escalado 2s ease;
@@ -238,31 +223,6 @@ figure {
         filter: blur(0);
     }
 }
-
-
-
-/* .showList {
-    animation: showList 2s ease ;
-}
-
-@keyframes showList {
-
-    0% {
-        filter: blur(5px);
-        scale: 0.8;
-    }
-
-    50% {
-        scale: 1;
-    }
-
-    100% {
-        filter: blur(0px);
-        animation-play-state: paused;
-    }
-    
-} */
-
 
 @media (min-width: 769px) {
     .project-list {
